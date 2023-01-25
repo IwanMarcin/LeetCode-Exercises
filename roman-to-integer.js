@@ -23,8 +23,6 @@ C can be placed before D (500) and M (1000) to make 400 and 900.
 Given a roman numeral, convert it to an integer.*/
 
 var romanToInt = function (s) {
-  //make an array
-  //toggle string into array
   let arr = [];
   s = s.replace("IV", "IIII").replace("IX", "VIIII");
   s = s.replace("XL", "XXXX").replace("XC", "LXXXX");
