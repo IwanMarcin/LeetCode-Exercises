@@ -1,41 +1,29 @@
-/* NEED TO FIX*/
+/*
+Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string "".
+
+ Example 1:
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+
+Example 2:
+Input: strs = ["dog","racecar","car"]
+Output: ""
+
+Explanation: There is no common prefix among the input strings.
+*/
 
 var longestCommonPrefix = function (strs) {
-  for (i = 0; i < strs.length; i++) {
-    strs[i] = strs[i].split("");
-  }
-  let test = "";
-  let helparr = [];
-  for (let i = 0; i < strs[0].length; i++) {
-    test = "";
-    for (let k = 0; k < strs.length; k++) {
-      test += strs[k][i];
-    }
-    helparr.push(test);
-  }
-  let ansarr = [];
-  let c = "";
-  let j = 0;
-  for (let i = 0; i < helparr.length; i++) {
-    j = helparr[i].length - 1;
-    for (let k = 0; k < helparr[0].length; k++) {
-      if (
-        helparr[i][k] === helparr[i][j] &&
-        helparr[i].length === helparr[0].length
-      ) {
-        c = helparr[i][k];
-        j--;
+  let ans = "";
+  let firstWord = strs[0];
+  for (let letter = 0; letter < firstWord.length; letter++) {
+    for (let word = 1; word < strs.length; word++) {
+      if (firstWord[letter] === strs[word][letter]) {
       } else {
-        c = "";
-        ansarr.push(c);
-        j--;
+        return ans;
       }
     }
-    ansarr.push(c);
+    ans = ans + firstWord[letter];
   }
-  let ans = "";
-  for (let i = 0; i < ansarr.length; i++) {
-    ans += ansarr[i];
-  }
-  return ans;
+  return strs[0];
 };
